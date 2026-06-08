@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJ Accounting &amp; Tax | Elspark, Germiston</title>
+  <meta name="description" content="AJ Accounting & Tax – Led by Alwin Jennings with 20 years of experience. Serving Elspark, Germiston and surrounding areas. Personal Tax, Business Accounting, VAT, Payroll & more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ─────────────── CSS RESET & VARIABLES ─────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #1E40AF;
+      --navy-d: #172F8A;
+      --teal:   #0EA5E9;
+      --teal-d: #0284C7;
+      --gold:   #D4A843;
+      --bg:     #F7F9FC;
+      --white:  #FFFFFF;
+      --dark:   #0F172A;
+      --mid:    #475569;
+      --light:  #CBD5E1;
+      --card-bg:#FFFFFF;
+      --shadow: 0 4px 24px rgba(30,64,175,0.08);
+      --shadow-hover: 0 12px 40px rgba(30,64,175,0.16);
+      --radius: 14px;
+      --ff-head: 'Playfair Display', Georgia, serif;
+      --ff-body: 'DM Sans', system-ui, sans-serif;
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--ff-body); background: var(--bg); color: var(--dark); line-height: 1.7; overflow-x: hidden; }
+
+    /* ─────────────── SCROLLBAR ─────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 3px; }
+
+    /* ─────────────── UTILITY ─────────────── */
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 90px 0; }
+    .section-alt { background: var(--white); }
+    .tag { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); background: rgba(14,165,233,0.1); padding: 4px 14px; border-radius: 100px; margin-bottom: 14px; }
+    .section-title { font-family: var(--ff-head); font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 700; color: var(--dark); line-height: 1.2; margin-bottom: 16px; }
+    .section-sub { font-size: 1.05rem; color: var(--mid); max-width: 560px; line-height: 1.8; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: 8px; font-family: var(--ff-body); font-size: 0.95rem; font-weight: 600; cursor: pointer; border: 2px solid transparent; text-decoration: none; transition: var(--transition); }
+    .btn-primary { background: var(--navy); color: var(--white); }
+    .btn-primary:hover { background: var(--navy-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,64,175,0.3); }
+    .btn-outline { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.7); }
+    .btn-outline:hover { background: var(--white); color: var(--navy); }
+    .btn-teal { background: var(--teal); color: var(--white); }
+    .btn-teal:hover { background: var(--teal-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(14,165,233,0.35); }
+
+    /* ─────────────── ANIMATIONS ─────────────── */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+    @keyframes slideRight { from { opacity:0; transform:translateX(-32px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-10px); } }
+    @keyframes pulse-ring { 0% { transform:scale(1); opacity:0.7; } 70% { transform:scale(1.45); opacity:0; } 100% { transform:scale(1.45); opacity:0; } }
+    @keyframes shimmer { 0%{background-position:200% center;} 100%{background-position:-200% center;} }
+
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ─────────────── NAVBAR ─────────────── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 18px 0;
+      background: transparent;
+      transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      padding: 12px 0;
+      box-shadow: 0 2px 20px rgba(30,64,175,0.1);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo svg { height: 44px; width: auto; transition: var(--transition); }
+    #navbar:not(.scrolled) .nav-logo-dark { display: none; }
+    #navbar.scrolled .nav-logo-light { display: none; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 0.92rem; font-weight: 500; text-decoration: none; color: rgba(255,255,255,0.9); transition: var(--transition); letter-spacing: 0.02em; }
+    #navbar.scrolled .nav-links a { color: var(--dark); }
+    .nav-links a:hover { color: var(--teal) !important; }
+    .nav-cta { display: flex; align-items: center; gap: 14px; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: white; border-radius: 2px; transition: var(--transition); }
+    #navbar.scrolled .hamburger span { background: var(--dark); }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 999;
+      background: rgba(15,23,42,0.97); flex-direction: column; align-items: center; justify-content: center;
+      gap: 32px;
+    }
+    .mobile-menu.open { display: flex; animation: fadeIn 0.25s ease; }
+    .mobile-menu a { font-size: 1.4rem; font-weight: 600; color: white; text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--teal); }
+    .mobile-close { position: absolute; top: 20px; right: 24px; font-size: 1.6rem; color: white; cursor: pointer; background: none; border: none; }
+
+    /* ─────────────── HERO ─────────────── */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg-wrap {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #0F2157 0%, #1E40AF 55%, #0c3a8a 100%);
+    }
+    .hero-bg-svg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.14;
+      pointer-events: none;
+    }
+    .hero-pattern {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 80% 50%, rgba(14,165,233,0.18) 0%, transparent 55%),
+                        radial-gradient(circle at 20% 80%, rgba(14,165,233,0.10) 0%, transparent 40%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 2; color: white; animation: fadeUp 1s ease both; }
+    .hero-title span { color: var(--teal); }
+    .hero-sub {
+      font-size: clamp(1rem, 1.8vw, 1.15rem); color: rgba(255,255,255,0.8);
+      max-width: 580px; margin-bottom: 38px;
+      animation: fadeUp 1s 0.35s ease both;
+    }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; animation: fadeUp 1s 0.45s ease both; }
+    .hero-chip { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); border-radius: 100px; padding: 5px 16px; font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.85); }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 14px; animation: fadeUp 1s 0.55s ease both; }
+    .hero-right { position: absolute; right: -40px; top: 50%; transform: translateY(-50%); width: 52%; opacity: 0.18; pointer-events: none; animation: fadeIn 1.5s 0.8s ease both; }
+    @media (max-width: 900px) { .hero-right { display: none; } }
+    .hero-scroll { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 6px; color: rgba(255,255,255,0.5); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+    .hero-scroll::after { content: ''; display: block; width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent); animation: float 2s ease infinite; }
+
+    /* ─────────────── ABOUT ─────────────── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .about-visual { position: relative; }
+    .about-img-frame {
+      width: 100%; aspect-ratio: 4/5; border-radius: 20px;
+      background: linear-gradient(145deg, #1E40AF, #0EA5E9);
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+      box-shadow: var(--shadow-hover);
+    }
+    .about-img-office { width: 100%; height: 100%; }
+    .about-badge {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--white); border-radius: var(--radius);
+      padding: 20px 24px; box-shadow: var(--shadow-hover); text-align: center;
+    }
+    .about-badge-num { font-family: var(--ff-head); font-size: 2.4rem; font-weight: 700; color: var(--navy); line-height: 1; }
+    .about-badge-txt { font-size: 0.78rem; color: var(--mid); font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+    .about-deco {
+      position: absolute; top: -16px; left: -16px; width: 64px; height: 64px;
+      background: rgba(14,165,233,0.15); border-radius: 50%; border: 2px solid var(--teal);
+    }
+    .about-bullets { list-style: none; margin-top: 28px; display: flex; flex-direction: column; gap: 12px; }
+    .about-bullets li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.96rem; color: var(--mid); }
+    .about-bullets li::before { content: ''; flex-shrink: 0; width: 20px; height: 20px; background: rgba(14,165,233,0.12); border-radius: 50%; border: 2px solid var(--teal); display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+    .about-bullets li i { color: var(--teal); font-size: 0.75rem; margin-top: 3px; flex-shrink: 0; }
+
+    /* ─────────────── INDUSTRIES ─────────────── */
+    .industries-header { text-align: center; margin-bottom: 56px; }
+    .industries-header .section-sub { margin: 0 auto; }
+    .ind-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .ind-card {
+      background: var(--card-bg); border-radius: var(--radius); padding: 34px 28px;
+      box-shadow: var(--shadow); border: 1px solid rgba(30,64,175,0.06);
+      transition: var(--transition); cursor: default;
+      position: relative; overflow: hidden;
+    }
+    .ind-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--navy), var(--teal));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+    }
+    .ind-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); border-color: rgba(14,165,233,0.2); }
+    .ind-card:hover::before { transform: scaleX(1); }
+    .ind-icon {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: linear-gradient(135deg, rgba(30,64,175,0.1), rgba(14,165,233,0.15));
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px; font-size: 1.4rem; color: var(--navy);
+      transition: var(--transition);
+    }
+    .ind-card:hover .ind-icon { background: linear-gradient(135deg, var(--navy), var(--teal)); color: white; }
+    .ind-title { font-family: var(--ff-head); font-size: 1.05rem; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+    .ind-desc { font-size: 0.88rem; color: var(--mid); line-height: 1.7; }
+
+    /* ─────────────── SERVICES ─────────────── */
+    .services-header { text-align: center; margin-bottom: 56px; }
+    .services-header .section-sub { margin: 0 auto; }
+    .srv-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .srv-card {
+      background: var(--card-bg); border-radius: var(--radius); padding: 28px 24px;
+      box-shadow: var(--shadow); border: 1px solid rgba(30,64,175,0.06);
+      transition: var(--transition); cursor: default;
+    }
+    .srv-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+    .srv-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px; font-size: 1.2rem; color: white;
+    }
+    .srv-title { font-weight: 600; font-size: 0.92rem; color: var(--dark); margin-bottom: 8px; line-height: 1.4; }
+    .srv-desc { font-size: 0.83rem; color: var(--mid); line-height: 1.7; }
+
+    /* ─────────────── STATS ─────────────── */
+    .stats-band {
+      background: linear-gradient(135deg, #0F2157, #1E40AF 60%, #0c4a9a);
+      padding: 70px 0;
+    }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; text-align: center; }
+    .stat-item { color: white; }
+    .stat-num {
+      font-family: var(--ff-head); font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: 700; color: white; line-height: 1;
+      background: linear-gradient(135deg, #fff, var(--teal));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: 0.88rem; color: rgba(255,255,255,0.7); margin-top: 8px; font-weight: 500; letter-spacing: 0.04em; }
+    .stat-divider { width: 40px; height: 2px; background: var(--teal); margin: 12px auto 0; border-radius: 2px; }
+
+    /* ─────────────── TESTIMONIALS ─────────────── */
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .testi-card {
+      background: var(--card-bg); border-radius: var(--radius); padding: 30px 28px;
+      box-shadow: var(--shadow); border: 1px solid rgba(30,64,175,0.06);
+      transition: var(--transition);
+    }
+    .testi-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .testi-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 14px; letter-spacing: 2px; }
+    .testi-quote { font-size: 0.93rem; color: var(--mid); line-height: 1.8; margin-bottom: 20px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy), var(--teal));
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .testi-name { font-weight: 600; font-size: 0.88rem; color: var(--dark); }
+    .testi-loc { font-size: 0.78rem; color: var(--mid); }
+
+    /* ─────────────── TAX TIPS ─────────────── */
+    .tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .tip-card {
+      background: var(--card-bg); border-radius: var(--radius); padding: 32px 28px;
+      box-shadow: var(--shadow); border: 1px solid rgba(30,64,175,0.06);
+      transition: var(--transition); cursor: pointer;
+    }
+    .tip-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+    .tip-tag { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+    .tip-title { font-family: var(--ff-head); font-size: 1.05rem; font-weight: 600; color: var(--dark); line-height: 1.4; margin-bottom: 12px; }
+    .tip-preview { font-size: 0.87rem; color: var(--mid); line-height: 1.75; }
+    .tip-footer { margin-top: 20px; font-size: 0.83rem; font-weight: 600; color: var(--teal); display: flex; align-items: center; gap: 6px; }
+
+    /* ─────────────── CONTACT ─────────────── */
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+    .contact-info h3 { font-family: var(--ff-head); font-size: 1.6rem; font-weight: 700; color: var(--dark); margin-bottom: 20px; }
+    .contact-info p { color: var(--mid); margin-bottom: 32px; line-height: 1.8; }
+    .contact-items { display: flex; flex-direction: column; gap: 18px; }
+    .c-item { display: flex; align-items: flex-start; gap: 14px; }
+    .c-icon {
+      width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(30,64,175,0.1), rgba(14,165,233,0.12));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--navy); font-size: 1rem;
+    }
+    .c-label { font-weight: 600; font-size: 0.83rem; color: var(--mid); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
+    .c-value { font-size: 0.93rem; color: var(--dark); font-weight: 500; }
+    .c-value a { color: var(--navy); text-decoration: none; }
+    .c-value a:hover { color: var(--teal); }
+
+    /* Map */
+    .map-embed {
+      margin-top: 28px; border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--light); height: 200px; background: #E8EFF5;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--mid); font-size: 0.85rem; flex-direction: column; gap: 8px;
+    }
+    .map-embed i { font-size: 2rem; color: var(--teal); }
+
+    /* Form */
+    .contact-form { background: var(--card-bg); border-radius: 20px; padding: 40px; box-shadow: var(--shadow-hover); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+    .form-group label { font-size: 0.82rem; font-weight: 600; color: var(--dark); letter-spacing: 0.04em; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 13px 16px; border: 1.5px solid var(--light); border-radius: 10px;
+      font-family: var(--ff-body); font-size: 0.92rem; color: var(--dark);
+      background: var(--bg); outline: none; transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(14,165,233,0.12); background: white; }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-submit { width: 100%; }
+    .form-success { display: none; text-align: center; padding: 20px; color: #16a34a; font-weight: 600; font-size: 1rem; }
+    .form-success i { font-size: 2rem; display: block; margin-bottom: 8px; }
+
+    /* ─────────────── FOOTER ─────────────── */
+    footer {
+      background: linear-gradient(135deg, #0a1635, #0F2157);
+      color: rgba(255,255,255,0.7);
+      padding: 70px 0 32px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.8; margin-top: 16px; max-width: 280px; }
+    .footer-social { display: flex; gap: 12px; margin-top: 20px; }
+    .footer-social a {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.7); font-size: 0.9rem; text-decoration: none;
+      transition: var(--transition);
+    }
+    .footer-social a:hover { background: var(--teal); color: white; border-color: var(--teal); }
+    .footer-col h4 { font-size: 0.83rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: white; margin-bottom: 18px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 0.88rem; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--teal); }
+    .footer-contact-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-contact-list li { font-size: 0.86rem; display: flex; gap: 10px; align-items: flex-start; }
+    .footer-contact-list li i { color: var(--teal); margin-top: 2px; flex-shrink: 0; }
+    .footer-bottom { padding-top: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; }
+    .footer-bottom a { color: var(--teal); text-decoration: none; }
+
+    /* ─────────────── WHATSAPP FLOAT ─────────────── */
+    .wa-btn {
+      position: fixed; bottom: 28px; right: 28px; z-index: 900;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #25D366; box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 1.6rem; text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+    .wa-btn:hover { transform: scale(1.1); }
+    .wa-btn::before {
+      content: ''; position: absolute;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: rgba(37,211,102,0.4);
+      animation: pulse-ring 2s ease infinite;
+    }
+
+    /* ─────────────── BACK TO TOP ─────────────── */
+    .top-btn {
+      position: fixed; bottom: 100px; right: 28px; z-index: 900;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--navy); color: white; border: none; cursor: pointer;
+      display: none; align-items: center; justify-content: center;
+      font-size: 1rem; box-shadow: var(--shadow); transition: var(--transition);
+    }
+    .top-btn.show { display: flex; }
+    .top-btn:hover { background: var(--teal); transform: translateY(-2px); }
+
+    /* ─────────────── RESPONSIVE ─────────────── */
+    @media (max-width: 1024px) {
+      .srv-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-visual { max-width: 420px; margin: 0 auto; }
+      .ind-grid { grid-template-columns: repeat(2, 1fr); }
+      .testi-grid { grid-template-columns: repeat(2, 1fr); }
+      .tips-grid { grid-template-columns: 1fr 1fr; }
+      .contact-wrapper { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta .btn { display: none; }
+      .hamburger { display: flex; }
+      .section { padding: 64px 0; }
+      .form-row { grid-template-columns: 1fr; }
+      .ind-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 540px) {
+      .ind-grid, .testi-grid, .tips-grid { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; }
+      .hero-btns .btn { justify-content: center; }
+      .about-badge { right: 0; bottom: -14px; }
+      .srv-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════ NAVBAR ══════════════════ -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <!-- Dark logo (shown when scrolled) -->
+    <a href="#hero" class="nav-logo nav-logo-dark">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 128" height="42">
+        <defs><clipPath id="bc"><rect x="4" y="4" width="108" height="108" rx="15"/></clipPath></defs>
+        <g clip-path="url(#bc)">
+          <rect x="4" y="4" width="108" height="108" fill="#1E40AF"/>
+          <rect x="4" y="85" width="108" height="27" fill="#0EA5E9"/>
+          <path d="M29,83 L58,19 L87,83" fill="none" stroke="white" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="41" y1="57" x2="75" y2="57" stroke="#0EA5E9" stroke-width="6" stroke-linecap="round"/>
+        </g>
+        <text x="58" y="98" text-anchor="middle" dominant-baseline="central" font-family="Raleway,sans-serif" font-weight="700" font-size="12" fill="white" letter-spacing="3">AJ</text>
+        <line x1="132" y1="13" x2="132" y2="103" stroke="#0EA5E9" stroke-width="1.5" opacity="0.4"/>
+        <text x="150" y="46" font-family="Raleway,sans-serif" font-weight="700" font-size="37" fill="#1E40AF" dominant-baseline="central">AJ</text>
+        <line x1="150" y1="62" x2="228" y2="62" stroke="#0EA5E9" stroke-width="2.5"/>
+        <text x="150" y="83" font-family="Raleway,sans-serif" font-weight="300" font-size="15" fill="#1E40AF" letter-spacing="4" dominant-baseline="central">ACCOUNTING &amp; TAX</text>
+      </svg>
+    </a>
+    <!-- Light logo (shown on hero) -->
+    <a href="#hero" class="nav-logo nav-logo-light">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 128" height="42">
+        <defs><clipPath id="bc2"><rect x="4" y="4" width="108" height="108" rx="15"/></clipPath></defs>
+        <g clip-path="url(#bc2)">
+          <rect x="4" y="4" width="108" height="108" fill="rgba(255,255,255,0.2)"/>
+          <rect x="4" y="85" width="108" height="27" fill="#0EA5E9"/>
+          <path d="M29,83 L58,19 L87,83" fill="none" stroke="white" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="41" y1="57" x2="75" y2="57" stroke="#0EA5E9" stroke-width="6" stroke-linecap="round"/>
+        </g>
+        <text x="58" y="98" text-anchor="middle" dominant-baseline="central" font-family="Raleway,sans-serif" font-weight="700" font-size="12" fill="white" letter-spacing="3">AJ</text>
+        <line x1="132" y1="13" x2="132" y2="103" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+        <text x="150" y="46" font-family="Raleway,sans-serif" font-weight="700" font-size="37" fill="white" dominant-baseline="central">AJ</text>
+        <line x1="150" y1="62" x2="228" y2="62" stroke="#0EA5E9" stroke-width="2.5"/>
+        <text x="150" y="83" font-family="Raleway,sans-serif" font-weight="300" font-size="15" fill="rgba(255,255,255,0.85)" letter-spacing="4" dominant-baseline="central">ACCOUNTING &amp; TAX</text>
+      </svg>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonials">Clients</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-teal" style="padding:10px 22px;font-size:0.86rem;">Book Consultation</a>
+      <button class="hamburger" id="hamBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
+  <a href="#about" class="mob-link">About</a>
+  <a href="#industries" class="mob-link">Industries</a>
+  <a href="#services" class="mob-link">Services</a>
+  <a href="#testimonials" class="mob-link">Clients</a>
+  <a href="#contact" class="mob-link">Contact</a>
+  <a href="#contact" class="btn btn-teal" style="margin-top:16px;">Book Consultation</a>
+</div>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section id="hero">
+  <div class="hero-bg-wrap">
+    <div class="hero-pattern"></div>
+    <div class="hero-grid"></div>
+  </div>
+
+  <div class="container">
+    <div class="hero-content" style="max-width:600px;">
+      <h1 class="hero-title">
+        Professional Tax &amp;<br><span>Accounting Services</span><br>in Germiston
+      </h1>
+      <p class="hero-sub">Led by <strong style="color:white;">Alwin Jennings</strong> with two decades of expertise — trusted by restaurants, manufacturers, gold vendors and hundreds of local families.</p>
+      <div class="hero-chips">
+        <span class="hero-chip"><i class="fas fa-check" style="color:var(--teal);margin-right:5px;"></i> SARS Registered</span>
+        <span class="hero-chip"><i class="fas fa-check" style="color:var(--teal);margin-right:5px;"></i> Personal &amp; Business Tax</span>
+        <span class="hero-chip"><i class="fas fa-check" style="color:var(--teal);margin-right:5px;"></i> VAT &amp; Payroll</span>
+        <span class="hero-chip"><i class="fas fa-check" style="color:var(--teal);margin-right:5px;"></i> 13 Years Established</span>
+      </div>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-teal">
+          <i class="fas fa-calendar-check"></i> Book Free Consultation
+        </a>
+        <a href="#services" class="btn btn-outline">
+          View Our Services <i class="fas fa-arrow-down"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+  </div>
+</section>
+
+<!-- ══════════════════ ABOUT ══════════════════ -->
+<section id="about" class="section section-alt">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal-left">
+        <div class="about-deco"></div>
+        <div class="about-img-frame">
+          <!-- Inline office illustration -->
+          <svg class="about-img-office" viewBox="0 0 480 600" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="abg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1E3A8A"/><stop offset="100%" stop-color="#1E40AF"/></linearGradient>
+              <linearGradient id="abg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0EA5E9"/><stop offset="100%" stop-color="#38BDF8"/></linearGradient>
+            </defs>
+            <rect width="480" height="600" fill="url(#abg1)"/>
+            <!-- grid lines -->
+            <line x1="0" y1="0" x2="0" y2="600" stroke="rgba(255,255,255,0.04)" stroke-width="40"/>
+            <line x1="80" y1="0" x2="80" y2="600" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            <line x1="160" y1="0" x2="160" y2="600" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            <line x1="240" y1="0" x2="240" y2="600" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            <line x1="320" y1="0" x2="320" y2="600" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            <line x1="400" y1="0" x2="400" y2="600" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            <!-- person silhouette -->
+            <circle cx="240" cy="170" r="62" fill="rgba(255,255,255,0.13)"/>
+            <circle cx="240" cy="155" r="44" fill="rgba(255,255,255,0.18)"/>
+            <rect x="168" y="205" width="144" height="12" rx="6" fill="rgba(14,165,233,0.5)"/>
+            <path d="M168,217 Q168,310 240,320 Q312,310 312,217 Z" fill="rgba(255,255,255,0.1)"/>
+            <!-- desk -->
+            <rect x="80" y="360" width="320" height="12" rx="4" fill="rgba(255,255,255,0.18)"/>
+            <rect x="88" y="372" width="304" height="80" rx="4" fill="rgba(255,255,255,0.07)"/>
+            <!-- monitor on desk -->
+            <rect x="174" y="296" width="132" height="82" rx="6" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+            <rect x="180" y="302" width="120" height="70" rx="4" fill="rgba(14,165,233,0.2)"/>
+            <rect x="186" y="308" width="60" height="4" rx="2" fill="rgba(255,255,255,0.3)"/>
+            <rect x="186" y="316" width="40" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+            <rect x="186" y="324" width="50" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+            <!-- floating badges -->
+            <rect x="20" y="80" width="110" height="48" rx="12" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <text x="75" y="99" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,255,255,0.6)" letter-spacing="1">EXPERIENCE</text>
+            <text x="75" y="117" text-anchor="middle" font-family="Playfair Display,serif" font-size="16" fill="white" font-weight="700">20 Years</text>
+            <rect x="350" y="140" width="110" height="48" rx="12" fill="rgba(14,165,233,0.2)" stroke="rgba(14,165,233,0.3)" stroke-width="1"/>
+            <text x="405" y="159" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,255,255,0.6)" letter-spacing="1">ESTABLISHED</text>
+            <text x="405" y="177" text-anchor="middle" font-family="Playfair Display,serif" font-size="16" fill="white" font-weight="700">13 Years</text>
+            <rect x="20" y="470" width="130" height="48" rx="12" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+            <text x="85" y="489" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="9" fill="rgba(255,255,255,0.6)" letter-spacing="1">SARS COMPLIANT</text>
+            <text x="85" y="507" text-anchor="middle" font-family="Playfair Display,serif" font-size="16" fill="white" font-weight="700">100%</text>
+            <!-- decoration dots -->
+            <circle cx="60" cy="400" r="3" fill="rgba(14,165,233,0.6)"/>
+            <circle cx="420" cy="460" r="3" fill="rgba(14,165,233,0.6)"/>
+            <circle cx="400" cy="80" r="2" fill="rgba(255,255,255,0.3)"/>
+            <circle cx="140" cy="530" r="2" fill="rgba(255,255,255,0.3)"/>
+          </svg>
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num">13</div>
+          <div class="about-badge-txt">Years Established</div>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <span class="tag">Our Story</span>
+        <h2 class="section-title">Two Decades of Expertise, Right Here in Germiston</h2>
+        <p style="color:var(--mid);line-height:1.9;margin-bottom:20px;">
+          AJ Accounting &amp; Tax was founded by <strong>Alwin Jennings</strong> in Elspark, Germiston. With two decades of expertise in taxation and accounting, Alwin has guided countless individuals and businesses through every tax challenge with confidence and precision.
+        </p>
+        <p style="color:var(--mid);line-height:1.9;margin-bottom:28px;">
+          For the past <strong>13 years</strong>, our small local practice has proudly served the Germiston community and surrounding areas. We specialise in personal, accurate and affordable service — across a wide range of industries from restaurants and manufacturing to precious metals trading.
+        </p>
+        <ul class="about-bullets">
+          <li><i class="fas fa-check"></i> 20 years of professional accounting &amp; tax experience</li>
+          <li><i class="fas fa-check"></i> Established practice serving Elspark &amp; Germiston for 13 years</li>
+          <li><i class="fas fa-check"></i> Wide industry knowledge across diverse sectors</li>
+          <li><i class="fas fa-check"></i> Fully SARS registered &amp; compliant</li>
+          <li><i class="fas fa-check"></i> Personal one-on-one attention — no call centres</li>
+        </ul>
+        <div style="margin-top:32px;">
+          <a href="#contact" class="btn btn-primary"><i class="fas fa-handshake"></i> Meet Alwin Jennings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ INDUSTRIES ══════════════════ -->
+<section id="industries" class="section">
+  <div class="container">
+    <div class="industries-header reveal">
+      <span class="tag">Industries We Serve</span>
+      <h2 class="section-title">Broad Expertise Across Many Sectors</h2>
+      <p class="section-sub">Alwin Jennings has built deep knowledge across a remarkable range of industries — each with its own unique tax challenges.</p>
+    </div>
+    <div class="ind-grid">
+      <div class="ind-card reveal" style="transition-delay:0.05s">
+        <div class="ind-icon"><i class="fas fa-utensils"></i></div>
+        <div class="ind-title">Restaurants &amp; Hospitality</div>
+        <div class="ind-desc">From small family eateries to busy franchises — we understand the unique cash-flow and VAT demands of the food service industry.</div>
+      </div>
+      <div class="ind-card reveal" style="transition-delay:0.1s">
+        <div class="ind-icon"><i class="fas fa-industry"></i></div>
+        <div class="ind-title">Metal Cutting &amp; Processing</div>
+        <div class="ind-desc">Specialised accounting for fabrication and manufacturing businesses — managing stock, VAT on raw materials, and compliance.</div>
+      </div>
+      <div class="ind-card reveal" style="transition-delay:0.15s">
+        <div class="ind-icon"><i class="fas fa-coins"></i></div>
+        <div class="ind-title">Gold Vendors &amp; Precious Metals</div>
+        <div class="ind-desc">Navigating the complex tax landscape for gold and precious metals traders — from dealer registration to accurate SARS reporting.</div>
+      </div>
+      <div class="ind-card reveal" style="transition-delay:0.2s">
+        <div class="ind-icon"><i class="fas fa-truck"></i></div>
+        <div class="ind-title">Trailer Manufacturing</div>
+        <div class="ind-desc">Accounting support for vehicle and trailer builders, handling production costing, assets, and compliance requirements.</div>
+      </div>
+      <div class="ind-card reveal" style="transition-delay:0.25s">
+        <div class="ind-icon"><i class="fas fa-store"></i></div>
+        <div class="ind-title">Small &amp; Medium Businesses</div>
+        <div class="ind-desc">Retail, services, and other sectors — we give SMEs the financial clarity and SARS compliance they need to grow confidently.</div>
+      </div>
+      <div class="ind-card reveal" style="transition-delay:0.3s">
+        <div class="ind-icon"><i class="fas fa-user-tie"></i></div>
+        <div class="ind-title">Individuals &amp; Families</div>
+        <div class="ind-desc">Personal income tax returns made simple and stress-free — maximising your refund while staying fully SARS compliant.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ SERVICES ══════════════════ -->
+<section id="services" class="section section-alt">
+  <div class="container">
+    <div class="services-header reveal">
+      <span class="tag">What We Do</span>
+      <h2 class="section-title">Comprehensive Tax &amp; Accounting Services</h2>
+      <p class="section-sub">Everything your business or personal finances need — handled expertly under one roof in Elspark, Germiston.</p>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card reveal" style="transition-delay:0.05s">
+        <div class="srv-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+        <div class="srv-title">Personal Income Tax Returns (ITR12)</div>
+        <div class="srv-desc">Accurate submission of your individual tax return — maximising deductions and ensuring full SARS compliance.</div>
+      </div>
+      <div class="srv-card reveal" style="transition-delay:0.1s">
+        <div class="srv-icon"><i class="fas fa-building"></i></div>
+        <div class="srv-title">Company Tax &amp; VAT Returns</div>
+        <div class="srv-desc">Corporate tax calculations, provisional tax, VAT201 submissions and SARS correspondence handled professionally.</div>
+      </div>
+      <div class="srv-card reveal" style="transition-delay:0.15s">
+        <div class="srv-icon"><i class="fas fa-book-open"></i></div>
+        <div class="srv-title">Bookkeeping &amp; Monthly Accounts</div>
+        <div class="srv-desc">Reliable monthly management accounts and bookkeeping that give you a clear financial picture of your business.</div>
+      </div>
+      <div class="srv-card reveal" style="transition-delay:0.2s">
+        <div class="srv-icon"><i class="fas fa-users"></i></div>
+        <div class="srv-title">Payroll &amp; EMP201 Submissions</div>
+        <div class="srv-desc">Accurate payroll processing, PAYE calculations, UIF, and timely EMP201/EMP501 SARS submissions.</div>
+      </div>
+      <div class="srv-card reveal" style="transition-delay:0.25s">
+        <div class="srv-icon"><i class="fas fa-certificate"></i></div>
+        <div class="srv-title">Tax Clearance &amp; CIPC Registrations</div>
+        <div class="srv-desc">Company registrations, CIPC annual returns, and tax clearance certificates for tenders and contracts.</div>
+      </div>
+      <div class="srv-card reveal" style="transition-delay:0.3s">
+        <div class="srv-icon"><i class="fas fa-gavel"></i></div>
+        <div class="srv-title">SARS Queries &amp; Disputes</div>
+        <div class="srv-desc">Expert representation and resolution of SARS audits, assessments, objections and verification requests.</div>
+      </div>
+      <div class="srv-card reveal" style="transition-delay:0.35s">
+        <div class="srv-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="srv-title">Financial Statements</div>
+        <div class="srv-desc">CIPC-compliant annual financial statements prepared with accuracy for companies, close corporations, and trusts.</div>
+      </div>
+      <div class="srv-card reveal" style="transition-delay:0.4s" style="background:linear-gradient(135deg,#1E40AF,#0EA5E9);color:white;">
+        <div class="srv-icon" style="background:rgba(255,255,255,0.2);"><i class="fas fa-calendar-check" style="color:white;"></i></div>
+        <div class="srv-title" style="color:white;">Book a Free Consultation</div>
+        <div class="srv-desc" style="color:rgba(255,255,255,0.8);">Not sure what you need? Let's talk. Book a free 30-minute consultation with Alwin Jennings today.</div>
+        <a href="#contact" style="display:inline-block;margin-top:14px;font-size:0.85rem;font-weight:600;color:white;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.5);">Get in touch →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ STATS ══════════════════ -->
+<div class="stats-band">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-num" data-target="20" data-suffix="+">0</div>
+        <div class="stat-divider"></div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div class="stat-item reveal" style="transition-delay:0.1s">
+        <div class="stat-num" data-target="13" data-suffix="">0</div>
+        <div class="stat-divider"></div>
+        <div class="stat-label">Years Established</div>
+      </div>
+      <div class="stat-item reveal" style="transition-delay:0.2s">
+        <div class="stat-num" data-target="6" data-suffix="+">0</div>
+        <div class="stat-divider"></div>
+        <div class="stat-label">Industries Served</div>
+      </div>
+      <div class="stat-item reveal" style="transition-delay:0.3s">
+        <div class="stat-num" data-target="100" data-suffix="%">0</div>
+        <div class="stat-divider"></div>
+        <div class="stat-label">SARS Compliant</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ TESTIMONIALS ══════════════════ -->
+<section id="testimonials" class="section section-alt">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px;" class="reveal">
+      <span class="tag">Client Stories</span>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-sub" style="margin:0 auto;">Real feedback from businesses and individuals in Germiston and surrounding areas.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal" style="transition-delay:0.05s">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Alwin Jennings has managed our restaurant's books for several years now. Tax season used to be stressful — now it's completely painless. Highly recommended."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MN</div>
+          <div><div class="testi-name">M. Nkosi</div><div class="testi-loc">Restaurant Owner · Germiston</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay:0.1s">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"AJ Accounting saved our metal processing company significant money by identifying deductions we didn't even know existed. Professional, knowledgeable and always on time."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">JP</div>
+          <div><div class="testi-name">J. Pretorius</div><div class="testi-loc">Metal Fabrication · Elspark</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay:0.15s">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"As a gold vendor, compliance is everything. Alwin understands the nuances of our industry and keeps us 100% above board with SARS. We trust AJ completely."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">RS</div>
+          <div><div class="testi-name">R. Singh</div><div class="testi-loc">Gold Vendor · Benoni</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay:0.2s">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"I've been using AJ for my personal tax return for 6 years. Always get a good refund, always submitted on time. Alwin explains everything clearly — no accounting jargon."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">KD</div>
+          <div><div class="testi-name">K. du Plessis</div><div class="testi-loc">Individual Client · Germiston</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay:0.25s">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"SARS sent us an audit notice and I was terrified. Alwin handled everything from start to finish — it was resolved quickly and professionally. Incredible peace of mind."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">TM</div>
+          <div><div class="testi-name">T. Motaung</div><div class="testi-loc">SME Owner · Boksburg</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal" style="transition-delay:0.3s">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Our trailer manufacturing business needed proper financial statements for a bank loan. AJ delivered professional CIPC-compliant statements well ahead of schedule. Brilliant service."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AV</div>
+          <div><div class="testi-name">A. van Wyk</div><div class="testi-loc">Trailer Manufacturer · Germiston</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ TAX TIPS ══════════════════ -->
+<section id="resources" class="section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px;" class="reveal">
+      <span class="tag">Tax Tips</span>
+      <h2 class="section-title">Helpful Tax Insights</h2>
+      <p class="section-sub" style="margin:0 auto;">Quick guides from Alwin Jennings to help you understand your tax obligations in South Africa.</p>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card reveal" style="transition-delay:0.05s">
+        <div class="tip-tag">Personal Tax · 2025/2026</div>
+        <div class="tip-title">How to Claim Home Office Expenses in 2026</div>
+        <p class="tip-preview">With more South Africans working from home, SARS allows deductions for a dedicated workspace. Learn what qualifies and how to calculate your allowable portion correctly.</p>
+        <div class="tip-footer"><i class="fas fa-arrow-right"></i> Contact us to discuss</div>
+      </div>
+      <div class="tip-card reveal" style="transition-delay:0.1s">
+        <div class="tip-tag">eFiling · Important Dates</div>
+        <div class="tip-title">Key SARS eFiling Deadlines You Must Know</div>
+        <p class="tip-preview">Missing SARS deadlines results in penalties and interest that add up fast. From ITR12 submissions to provisional tax dates — staying on schedule protects your pocket.</p>
+        <div class="tip-footer"><i class="fas fa-arrow-right"></i> Contact us to discuss</div>
+      </div>
+      <div class="tip-card reveal" style="transition-delay:0.15s">
+        <div class="tip-tag">Business Tax · VAT</div>
+        <div class="tip-title">VAT Registration: What Small Businesses Need to Know</div>
+        <p class="tip-preview">If your business turnover exceeds R1 million, VAT registration becomes compulsory. Voluntary registration below this threshold can also benefit your business in certain cases.</p>
+        <div class="tip-footer"><i class="fas fa-arrow-right"></i> Contact us to discuss</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;" class="reveal">
+      <a href="#contact" class="btn btn-primary"><i class="fas fa-comments"></i> Ask Alwin a Tax Question</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CONTACT ══════════════════ -->
+<section id="contact" class="section section-alt">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px;" class="reveal">
+      <span class="tag">Get In Touch</span>
+      <h2 class="section-title">Book Your Free Consultation</h2>
+      <p class="section-sub" style="margin:0 auto;">Ready to take control of your tax? Send us a message and Alwin Jennings will be in touch within one business day.</p>
+    </div>
+    <div class="contact-wrapper">
+      <div class="reveal-left">
+        <h3>Contact AJ Accounting &amp; Tax</h3>
+        <p>We are conveniently located in Elspark, Germiston and serve clients across the East Rand and greater Gauteng area.</p>
+        <div class="contact-items">
+          <div class="c-item">
+            <div class="c-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <div class="c-label">Address</div>
+              <div class="c-value">6 Rooibessie St, Elspark, Germiston</div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <div class="c-label">Phone</div>
+              <div class="c-value"><a href="tel:+27834209049">+27 (0) 83 420 9049</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon"><i class="fab fa-whatsapp"></i></div>
+            <div>
+              <div class="c-label">WhatsApp</div>
+              <div class="c-value"><a href="https://wa.me/27834209049">+27 (0) 83 420 9049</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <div class="c-label">Email</div>
+              <div class="c-value"><a href="mailto:aij.jennings@gmail.com">aij.jennings@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <div class="c-label">Business Hours</div>
+              <div class="c-value">Monday – Friday: 8:00 – 17:00</div>
+            </div>
+          </div>
+        </div>
+        <div class="map-embed">
+          <i class="fas fa-map-marked-alt"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7155.636926507906!2d28.233153712356195!3d-26.26755460728108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9519b91ec862a5%3A0x2b59e0953759aea9!2s6%20Rooibessie%20St%2C%20Elspark%2C%20Germiston%2C%201418!5e0!3m2!1sen!2sza!4v1773475060819!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></i>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+      <div class="contact-form">
+        <h3 style="font-family:var(--ff-head);font-size:1.4rem;font-weight:700;color:var(--dark);margin-bottom:6px;">Send a Message</h3>
+        <p style="font-size:0.87rem;color:var(--mid);margin-bottom:28px;">Fill in the form and we'll get back to you within one business day.</p>
+
+        <div class="form-success" id="formSuccess" style="display:none;">
+          <i class="fas fa-check-circle"></i>
+          Thank you! We'll be in touch within one business day.
+        </div>
+        <div id="formError" style="display:none;color:red;margin-bottom:16px;">
+          ❌ Something went wrong. Please try again.
+        </div>
+
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name *</label>
+              <input type="text" id="fname" name="fname" placeholder="Your first name" required>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name *</label>
+              <input type="text" id="lname" name="lname" placeholder="Your last name" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone / WhatsApp *</label>
+              <input type="tel" id="phone" name="phone" placeholder="+27 ..." required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option value="">— Select a Service —</option>
+              <option>Personal Income Tax (ITR12)</option>
+              <option>Company Tax &amp; VAT Returns</option>
+              <option>Bookkeeping &amp; Monthly Accounts</option>
+              <option>Payroll &amp; EMP201</option>
+              <option>Tax Clearance / CIPC Registration</option>
+              <option>SARS Query or Dispute</option>
+              <option>Financial Statements</option>
+              <option>Other / General Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="msg">Message *</label>
+            <textarea id="msg" name="msg" placeholder="Tell us a little about your needs…" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-teal form-submit">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <!-- White footer logo -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 128" height="38" style="display:block;">
+          <defs><clipPath id="fbc"><rect x="4" y="4" width="108" height="108" rx="15"/></clipPath></defs>
+          <g clip-path="url(#fbc)">
+            <rect x="4" y="4" width="108" height="108" fill="rgba(255,255,255,0.15)"/>
+            <rect x="4" y="85" width="108" height="27" fill="#0EA5E9"/>
+            <path d="M29,83 L58,19 L87,83" fill="none" stroke="white" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="41" y1="57" x2="75" y2="57" stroke="#0EA5E9" stroke-width="6" stroke-linecap="round"/>
+          </g>
+          <text x="58" y="98" text-anchor="middle" dominant-baseline="central" font-family="Raleway,sans-serif" font-weight="700" font-size="12" fill="white" letter-spacing="3">AJ</text>
+          <line x1="132" y1="13" x2="132" y2="103" stroke="rgba(255,255,255,0.25)" stroke-width="1.5"/>
+          <text x="150" y="46" font-family="Raleway,sans-serif" font-weight="700" font-size="37" fill="white" dominant-baseline="central">AJ</text>
+          <line x1="150" y1="62" x2="228" y2="62" stroke="#0EA5E9" stroke-width="2.5"/>
+          <text x="150" y="83" font-family="Raleway,sans-serif" font-weight="300" font-size="15" fill="rgba(255,255,255,0.75)" letter-spacing="4" dominant-baseline="central">ACCOUNTING &amp; TAX</text>
+        </svg>
+        <p>Your trusted tax and accounting partner in Elspark, Germiston. Personal service, expert advice, and 20 years of experience at your side.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/27834209049" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#testimonials">Client Stories</a></li>
+          <li><a href="#resources">Tax Tips</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Personal Tax (ITR12)</a></li>
+          <li><a href="#services">Company Tax &amp; VAT</a></li>
+          <li><a href="#services">Bookkeeping</a></li>
+          <li><a href="#services">Payroll</a></li>
+          <li><a href="#services">CIPC Registrations</a></li>
+          <li><a href="#services">SARS Disputes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul class="footer-contact-list">
+          <li><i class="fas fa-map-marker-alt"></i><span>Elspark, Germiston<br>Gauteng, South Africa</span></li>
+          <li><i class="fas fa-phone"></i><a href="tel:+27834209049" style="color:rgba(255,255,255,0.6);text-decoration:none;">+27 (0) 83 420 9049</a></li>
+          <li><i class="fas fa-envelope"></i><a href="mailto:info@ajaccounting.co.za" style="color:rgba(255,255,255,0.6);text-decoration:none;">aij.jennings@gmail.com</a></li>
+          <li><i class="fas fa-clock"></i><span>Mon–Fri: 8:00–17:00</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AJ Accounting &amp; Tax · Elspark, Germiston · All Rights Reserved</span>
+      <span>Website by Ronald &nbsp;|&nbsp; <a href="#">Privacy Policy</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════ FLOATING BUTTONS ══════════════════ -->
+<a href="https://wa.me/27834209049" class="wa-btn" target="_blank" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+<button class="top-btn" id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+
+<!-- ══════════════════ JAVASCRIPT ══════════════════ -->
+<script>
+  // ── Navbar scroll behaviour
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('topBtn').classList.toggle('show', window.scrollY > 400);
+  });
+
+  // ── Mobile menu
+  const hamBtn = document.getElementById('hamBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+  hamBtn.addEventListener('click', () => {
+    hamBtn.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileClose.addEventListener('click', closeMobile);
+  document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', closeMobile));
+  function closeMobile() {
+    hamBtn.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // ── Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const ro = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => ro.observe(el));
+
+  // ── Counter animation
+  function animateCounter(el) {
+    const target = +el.dataset.target;
+    const suffix = el.dataset.suffix || '';
+    const duration = 1600;
+    const step = target / (duration / 16);
+    let current = 0;
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current) + suffix;
+    }, 16);
+  }
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.stat-num').forEach(animateCounter);
+        counterObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+  const statBand = document.querySelector('.stats-band');
+  if (statBand) counterObserver.observe(statBand);
+
+  // ── Contact form submission
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('contactForm');
+
+    if (!form) return;
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const successMsg = document.getElementById('formSuccess');
+      const errorMsg = document.getElementById('formError');
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+      const data = new FormData(form);
+
+      try {
+        const res = await fetch('https://formspree.io/f/xwvjoqzy', {
+          method: 'POST',
+          body: data,
+          headers: { Accept: 'application/json' }
+        });
+
+        if (res.ok) {
+          form.reset();
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+          errorMsg.style.display = 'none';
+        } else {
+          errorMsg.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+        }
+      } catch {
+        errorMsg.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+      }
+    });
+  });
+
+  // ── Smooth close hero scroll hint
+  document.querySelector('.hero-scroll')?.addEventListener('click', () => {
+    document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+</body>
+</html>

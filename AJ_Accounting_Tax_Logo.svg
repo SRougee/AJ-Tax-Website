@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 128" width="370" height="128">
+  <defs>
+    <clipPath id="badge-clip">
+      <rect x="4" y="4" width="108" height="108" rx="15"/>
+    </clipPath>
+  </defs>
+
+  <!-- Badge icon -->
+  <g clip-path="url(#badge-clip)">
+    <rect x="4" y="4" width="108" height="108" fill="#1E40AF"/>
+    <rect x="4" y="85" width="108" height="27" fill="#0EA5E9"/>
+    <path d="M29,83 L58,19 L87,83"
+          fill="none" stroke="white" stroke-width="9"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="41" y1="57" x2="75" y2="57"
+          stroke="#0EA5E9" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <!-- AJ monogram in teal strip -->
+  <text x="58" y="98" text-anchor="middle" dominant-baseline="central"
+        font-family="'Raleway', Helvetica, Arial, sans-serif"
+        font-weight="700" font-size="12" fill="white" letter-spacing="3">AJ</text>
+
+  <!-- Vertical divider -->
+  <line x1="132" y1="13" x2="132" y2="103"
+        stroke="#0EA5E9" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- AJ large logotype -->
+  <text x="150" y="46"
+        font-family="'Raleway', Helvetica, Arial, sans-serif"
+        font-weight="700" font-size="37" fill="#1E40AF" dominant-baseline="central">AJ</text>
+
+  <!-- Teal accent rule -->
+  <line x1="150" y1="62" x2="228" y2="62"
+        stroke="#0EA5E9" stroke-width="2.5"/>
+
+  <!-- ACCOUNTING & TAX -->
+  <text x="150" y="83"
+        font-family="'Raleway', Helvetica, Arial, sans-serif"
+        font-weight="300" font-size="15" fill="#1E40AF"
+        letter-spacing="4" dominant-baseline="central">ACCOUNTING &amp; TAX</text>
+</svg>
